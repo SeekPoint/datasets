@@ -31,6 +31,7 @@ if TYPE_CHECKING:
 
 class TFFormatter(Formatter[Mapping, "tf.Tensor", Mapping]):
     def __init__(self, features=None, **tf_tensor_kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(features=features)
         self.tf_tensor_kwargs = tf_tensor_kwargs
         import tensorflow as tf  # noqa: import tf at initialization

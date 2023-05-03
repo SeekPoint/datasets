@@ -23,6 +23,7 @@ from .utils import require_regex, require_spacy, require_spacy_model, require_to
 
 class Foo:
     def __init__(self, foo):
+        print('%s __init__ called', self.__classs__.__name__)
         self.foo = foo
 
     def __call__(self):
@@ -41,6 +42,7 @@ class DatasetChild(datasets.Dataset):
 
 class UnpicklableCallable:
     def __init__(self, callable):
+        print('%s __init__ called', self.__classs__.__name__)
         self.callable = callable
 
     def __call__(self, *args, **kwargs):

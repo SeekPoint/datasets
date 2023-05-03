@@ -276,6 +276,7 @@ class _SplitMerged(SplitBase):
     """Represent two split descriptors merged together."""
 
     def __init__(self, split1, split2):
+        print('%s __init__ called', self.__classs__.__name__)
         self._split1 = split1
         self._split2 = split2
 
@@ -292,6 +293,7 @@ class _SubSplit(SplitBase):
     """Represent a sub split of a split descriptor."""
 
     def __init__(self, split, slice_value):
+        print('%s __init__ called', self.__classs__.__name__)
         self._split = split
         self._slice_value = slice_value
 
@@ -354,6 +356,7 @@ class NamedSplit(SplitBase):
     """
 
     def __init__(self, name):
+        print('%s __init__ called', self.__classs__.__name__)
         self._name = name
         split_names_from_instruction = [split_instruction.split("[")[0] for split_instruction in name.split("+")]
         for split_name in split_names_from_instruction:
@@ -391,6 +394,7 @@ class NamedSplitAll(NamedSplit):
     """Split corresponding to the union of all defined dataset splits."""
 
     def __init__(self):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__("all")
 
     def __repr__(self):
@@ -476,6 +480,7 @@ class SplitReadInstruction:
     """
 
     def __init__(self, split_info=None):
+        print('%s __init__ called', self.__classs__.__name__)
         self._splits = NonMutableDict(error_msg="Overlap between splits. Split {key} has been added with " "itself.")
 
         if split_info:
@@ -518,6 +523,7 @@ class SplitDict(dict):
     """Split info object."""
 
     def __init__(self, *args, dataset_name=None, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(*args, **kwargs)
         self.dataset_name = dataset_name
 
@@ -630,6 +636,7 @@ class SplitGenerator:
     split_info: SplitInfo = dataclasses.field(init=False)
 
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         self.name = str(self.name)  # Make sure we convert NamedSplits in strings
         NamedSplit(self.name)  # check that it's a valid split name
         self.split_info = SplitInfo(name=self.name)

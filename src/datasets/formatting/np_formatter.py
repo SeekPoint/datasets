@@ -11,6 +11,7 @@ from .formatting import Formatter
 
 class NumpyFormatter(Formatter[Mapping, np.ndarray, Mapping]):
     def __init__(self, features=None, **np_array_kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(features=features)
         self.np_array_kwargs = np_array_kwargs
 

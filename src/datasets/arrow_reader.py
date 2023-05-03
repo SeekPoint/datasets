@@ -168,6 +168,7 @@ class BaseReader:
             path (str): path where tfrecords are stored.
             info (DatasetInfo): info about the dataset.
         """
+        print('%s __init__ called', self.__classs__.__name__)
         self._path: str = path
         self._info: Optional["DatasetInfo"] = info
         self._filetype_suffix: Optional[str] = None
@@ -318,6 +319,7 @@ class ArrowReader(BaseReader):
             path (str): path where Arrow files are stored.
             info (DatasetInfo): info about the dataset.
         """
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(path, info)
         self._filetype_suffix = "arrow"
 
@@ -365,6 +367,7 @@ class ParquetReader(BaseReader):
             path (str): path where tfrecords are stored.
             info (DatasetInfo): info about the dataset.
         """
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(path, info)
         self._filetype_suffix = "parquet"
 
@@ -403,6 +406,7 @@ class _RelativeInstruction:
     rounding: Optional[str] = None
 
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         if self.unit is not None and self.unit not in ["%", "abs"]:
             raise ValueError("unit must be either % or abs")
         if self.rounding is not None and self.rounding not in ["closest", "pct1_dropremainder"]:
@@ -521,6 +525,7 @@ class ReadInstruction:
     """
 
     def _init(self, relative_instructions):
+        print('%s __init__ called', self.__classs__.__name__)
         # Private initializer.
         self._relative_instructions = relative_instructions
 
@@ -559,6 +564,7 @@ class ReadInstruction:
         # This constructor is not always called. See factory method
         # `_read_instruction_from_relative_instructions`. Common init instructions
         # MUST be placed in the _init method.
+        print('%s __init__ called', self.__classs__.__name__)
         self._init([_RelativeInstruction(split_name, from_, to, unit, rounding)])
 
     @classmethod

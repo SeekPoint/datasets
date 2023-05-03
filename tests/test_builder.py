@@ -110,6 +110,7 @@ class DummyGeneratorBasedBuilderWithIntegers(GeneratorBasedBuilder):
 
 class DummyGeneratorBasedBuilderWithConfigConfig(BuilderConfig):
     def __init__(self, content="foo", times=2, *args, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(*args, **kwargs)
         self.content = content
         self.times = times
@@ -142,6 +143,7 @@ class DummyBuilderWithDefaultConfig(DummyBuilderWithMultipleConfigs):
 
 class DummyBuilderWithDownload(DummyBuilder):
     def __init__(self, *args, rel_path=None, abs_path=None, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(*args, **kwargs)
         self._rel_path = rel_path
         self._abs_path = abs_path
@@ -973,6 +975,7 @@ class DummyBuilderWithBuilderConfigs(GeneratorBasedBuilder):
 
 class CustomBuilderConfig(BuilderConfig):
     def __init__(self, date=None, language=None, version="2.0.0", **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         name = f"{date}.{language}"
         super().__init__(name=name, version=version, **kwargs)
         self.date = date

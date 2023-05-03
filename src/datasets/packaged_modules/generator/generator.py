@@ -11,6 +11,7 @@ class GeneratorConfig(datasets.BuilderConfig):
     features: Optional[datasets.Features] = None
 
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         assert self.generator is not None, "generator must be specified"
 
         if self.gen_kwargs is None:

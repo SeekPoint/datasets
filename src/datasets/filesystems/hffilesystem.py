@@ -31,6 +31,7 @@ class HfFileSystem(AbstractFileSystem):
             token (:obj:``str``, `optional`):
                 Hugging Face token. Will default to the locally saved token if not provided.
         """
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(self, **kwargs)
         self.repo_info = repo_info
         self.token = token

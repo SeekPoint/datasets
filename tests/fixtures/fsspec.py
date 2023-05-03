@@ -10,6 +10,7 @@ class MockFileSystem(AbstractFileSystem):
     protocol = "mock"
 
     def __init__(self, *args, local_root_dir, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self._fs = LocalFileSystem(*args, **kwargs)
         self.local_root_dir = Path(local_root_dir).resolve().as_posix() + "/"

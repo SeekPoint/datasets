@@ -95,6 +95,7 @@ class Timeout(TimeoutError):
     def __init__(self, lock_file):
         """ """
         #: The path of the file lock.
+        print('%s __init__ called', self.__classs__.__name__)
         self.lock_file = lock_file
         return None
 
@@ -116,6 +117,7 @@ class Timeout(TimeoutError):
 # :seealso: issue #37 (memory leak)
 class _Acquire_ReturnProxy:
     def __init__(self, lock):
+        print('%s __init__ called', self.__classs__.__name__)
         self.lock = lock
         return None
 
@@ -144,6 +146,7 @@ class BaseFileLock:
         # os.open() function.
         # This file lock is only NOT None, if the object currently holds the
         # lock.
+        print('%s __init__ called', self.__classs__.__name__)
         self._lock_file_fd = None
 
         # The default timeout value.
@@ -351,7 +354,7 @@ class WindowsFileLock(BaseFileLock):
 
     def __init__(self, lock_file, timeout=-1, max_filename_length=None):
         from .file_utils import relative_to_absolute_path
-
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(lock_file, timeout=timeout, max_filename_length=max_filename_length)
         self._lock_file = "\\\\?\\" + relative_to_absolute_path(self.lock_file)
 
@@ -396,6 +399,7 @@ class UnixFileLock(BaseFileLock):
     """
 
     def __init__(self, lock_file, timeout=-1, max_filename_length=None):
+        print('%s __init__ called', self.__classs__.__name__)
         max_filename_length = os.statvfs(os.path.dirname(lock_file)).f_namemax
         super().__init__(lock_file, timeout=timeout, max_filename_length=max_filename_length)
 

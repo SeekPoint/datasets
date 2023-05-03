@@ -31,6 +31,7 @@ if TYPE_CHECKING:
 
 class JaxFormatter(Formatter[Mapping, "jnp.ndarray", Mapping]):
     def __init__(self, features=None, **jnp_array_kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(features=features)
         self.jnp_array_kwargs = jnp_array_kwargs
         import jax.numpy as jnp  # noqa import jax at initialization

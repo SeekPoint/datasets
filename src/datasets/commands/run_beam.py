@@ -74,6 +74,7 @@ class RunBeamCommand(BaseDatasetsCLICommand):
         force_redownload: bool,
         **config_kwargs,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         self._dataset = dataset
         self._name = name
         self._cache_dir = cache_dir

@@ -1036,6 +1036,7 @@ def _interpolation_search_ground_truth(arr: List[int], x: int) -> Union[int, Ind
 
 class _ListWithGetitemCounter(list):
     def __init__(self, *args, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(*args, **kwargs)
         self.unique_getitem_calls = set()
 

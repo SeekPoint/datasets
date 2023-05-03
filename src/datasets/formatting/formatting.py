@@ -152,6 +152,7 @@ class PythonArrowExtractor(BaseArrowExtractor[dict, list, dict]):
 
 class NumpyArrowExtractor(BaseArrowExtractor[dict, np.ndarray, dict]):
     def __init__(self, **np_array_kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         self.np_array_kwargs = np_array_kwargs
 
     def extract_row(self, pa_table: pa.Table) -> dict:
@@ -219,6 +220,7 @@ class PandasArrowExtractor(BaseArrowExtractor[pd.DataFrame, pd.Series, pd.DataFr
 
 class PythonFeaturesDecoder:
     def __init__(self, features: Features):
+        print('%s __init__ called', self.__classs__.__name__)
         self.features = features
 
     def decode_row(self, row: dict) -> dict:
@@ -233,6 +235,7 @@ class PythonFeaturesDecoder:
 
 class PandasFeaturesDecoder:
     def __init__(self, features: Features):
+        print('%s __init__ called', self.__classs__.__name__)
         self.features = features
 
     def decode_row(self, row: pd.DataFrame) -> pd.DataFrame:
@@ -267,6 +270,7 @@ class LazyDict(MutableMapping):
     """A dictionary backed by Arrow data. The values are formatted on-the-fly when accessing the dictionary."""
 
     def __init__(self, pa_table: pa.Table, formatter: "Formatter"):
+        print('%s __init__ called', self.__classs__.__name__)
         self.pa_table = pa_table
         self.formatter = formatter
 
@@ -397,6 +401,7 @@ class Formatter(Generic[RowFormat, ColumnFormat, BatchFormat]):
     pandas_arrow_extractor = PandasArrowExtractor
 
     def __init__(self, features=None):
+        print('%s __init__ called', self.__classs__.__name__)
         self.features = features
         self.python_features_decoder = PythonFeaturesDecoder(self.features)
         self.pandas_features_decoder = PandasFeaturesDecoder(self.features)
@@ -432,6 +437,7 @@ class ArrowFormatter(Formatter[pa.Table, pa.Array, pa.Table]):
 
 class PythonFormatter(Formatter[Mapping, list, Mapping]):
     def __init__(self, features=None, lazy=False):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(features)
         self.lazy = lazy
 
@@ -483,6 +489,7 @@ class CustomFormatter(Formatter[dict, ColumnFormat, dict]):
     """
 
     def __init__(self, transform: Callable[[dict], dict], features=None, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(features=features)
         self.transform = transform
 

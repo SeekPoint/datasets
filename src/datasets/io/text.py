@@ -18,6 +18,7 @@ class TextDatasetReader(AbstractDatasetReader):
         num_proc: Optional[int] = None,
         **kwargs,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(
             path_or_paths,
             split=split,

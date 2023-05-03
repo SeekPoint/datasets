@@ -65,6 +65,7 @@ class CsvConfig(datasets.BuilderConfig):
     on_bad_lines: Literal["error", "warn", "skip"] = "error"
 
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         if self.delimiter is not None:
             self.sep = self.delimiter
         if self.column_names is not None:

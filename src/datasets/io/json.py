@@ -25,6 +25,7 @@ class JsonDatasetReader(AbstractDatasetReader):
         num_proc: Optional[int] = None,
         **kwargs,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(
             path_or_paths,
             split=split,
@@ -79,6 +80,7 @@ class JsonDatasetWriter:
         num_proc: Optional[int] = None,
         **to_json_kwargs,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         if num_proc is not None and num_proc <= 0:
             raise ValueError(f"num_proc {num_proc} must be an integer > 0.")
 

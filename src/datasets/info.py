@@ -80,6 +80,7 @@ class PostProcessedInfo:
     resources_checksums: Optional[dict] = None
 
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         # Convert back to the correct classes when we reload from dict
         if self.features is not None and not isinstance(self.features, Features):
             self.features = Features.from_dict(self.features)
@@ -169,6 +170,7 @@ class DatasetInfo:
     ]
 
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         # Convert back to the correct classes when we reload from dict
         if self.features is not None and not isinstance(self.features, Features):
             self.features = Features.from_dict(self.features)

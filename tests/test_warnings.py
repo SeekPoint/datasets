@@ -13,6 +13,7 @@ def mock_emitted_deprecation_warnings(monkeypatch):
 def mock_hfh(monkeypatch):
     class MetricMock:
         def __init__(self, metric_id):
+            print('%s __init__ called', self.__classs__.__name__)
             self.id = metric_id
 
     class HfhMock:

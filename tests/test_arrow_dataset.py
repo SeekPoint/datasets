@@ -1477,6 +1477,7 @@ class BaseDatasetTest(TestCase):
 
         class ExampleCounter:
             def __init__(self, batched=False):
+                print('%s __init__ called', self.__classs__.__name__)
                 self.batched = batched
                 # state
                 self.cnt = 0

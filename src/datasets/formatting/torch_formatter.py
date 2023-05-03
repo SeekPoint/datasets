@@ -31,6 +31,7 @@ if TYPE_CHECKING:
 
 class TorchFormatter(Formatter[Mapping, "torch.Tensor", Mapping]):
     def __init__(self, features=None, **torch_tensor_kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(features=features)
         self.torch_tensor_kwargs = torch_tensor_kwargs
         import torch  # noqa import torch at initialization

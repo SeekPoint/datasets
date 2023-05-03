@@ -196,6 +196,7 @@ class SharedMemoryContext:
     # This is a context manager for creating shared memory that ensures cleanup happens even if a process is interrupted
     # The process that creates shared memory is always the one responsible for unlinking it in the end
     def __init__(self):
+        print('%s __init__ called', self.__classs__.__name__)
         self.created_shms = []
         self.opened_shms = []
 
@@ -238,6 +239,7 @@ class NumpyMultiprocessingGenerator:
         drop_remainder,
         num_workers,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         self.dataset = dataset
         self.cols_to_retain = cols_to_retain
         self.collate_fn = collate_fn

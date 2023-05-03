@@ -491,6 +491,7 @@ class Value:
     _type: str = field(default="Value", init=False, repr=False)
 
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         if self.dtype == "double":  # fix inferred type
             self.dtype = "float64"
         if self.dtype == "float":  # fix inferred type
@@ -515,6 +516,7 @@ class Value:
 
 class _ArrayXD:
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         self.shape = tuple(self.shape)
 
     def __call__(self):
@@ -631,6 +633,7 @@ class _ArrayXDExtensionType(pa.PyExtensionType):
     ndims: Optional[int] = None
 
     def __init__(self, shape: tuple, dtype: str):
+        print('%s __init__ called', self.__classs__.__name__)
         if self.ndims is None or self.ndims <= 1:
             raise ValueError("You must instantiate an array type with a value for dim that is > 1")
         if len(shape) != self.ndims:
@@ -765,6 +768,7 @@ class PandasArrayExtensionDtype(PandasExtensionDtype):
     _metadata = "value_type"
 
     def __init__(self, value_type: Union["PandasArrayExtensionDtype", np.dtype]):
+        print('%s __init__ called', self.__classs__.__name__)
         self._value_type = value_type
 
     def __from_arrow__(self, array: Union[pa.Array, pa.ChunkedArray]):

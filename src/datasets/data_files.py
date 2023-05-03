@@ -737,6 +737,7 @@ class DataFilesList(List[Union[Path, Url]]):
     """
 
     def __init__(self, data_files: List[Union[Path, Url]], origin_metadata: List[Tuple[str]]):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(data_files)
         self.origin_metadata = origin_metadata
 

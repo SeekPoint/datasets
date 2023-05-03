@@ -79,6 +79,7 @@ class TestCommand(BaseDatasetsCLICommand):
         force_redownload: bool,
         clear_cache: bool,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         self._dataset = dataset
         self._name = name
         self._cache_dir = cache_dir

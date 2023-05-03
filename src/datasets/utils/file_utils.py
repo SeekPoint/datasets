@@ -48,6 +48,7 @@ def init_hf_modules(hf_modules_cache: Optional[Union[Path, str]] = None) -> str:
     It can also be set with the environment variable HF_MODULES_CACHE.
     This is used to add modules such as `datasets_modules`
     """
+    print('%s init_hf_modules called', self.__classs__.__name__)
     hf_modules_cache = hf_modules_cache if hf_modules_cache is not None else config.HF_MODULES_CACHE
     hf_modules_cache = str(hf_modules_cache)
     if hf_modules_cache not in sys.path:

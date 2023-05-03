@@ -27,6 +27,7 @@ EXPECTED_XML_DUMMY_DATA = """\
 
 class DummyBuilder(GeneratorBasedBuilder):
     def __init__(self, tmp_test_dir, *args, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(*args, **kwargs)
         self.tmp_test_dir = tmp_test_dir
 

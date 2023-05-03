@@ -131,6 +131,7 @@ class DatasetInfoMixin:
     """
 
     def __init__(self, info: DatasetInfo, split: Optional[NamedSplit]):
+        print('%s __init__ called', self.__classs__.__name__)
         self._info = info
         self._split = split
 
@@ -617,6 +618,7 @@ class Dataset(DatasetInfoMixin, IndexableMixin, TensorflowDatasetMixin):
         indices_table: Optional[Table] = None,
         fingerprint: Optional[str] = None,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         info = info.copy() if info is not None else DatasetInfo()
         DatasetInfoMixin.__init__(self, info=info, split=split)
         IndexableMixin.__init__(self)

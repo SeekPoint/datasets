@@ -25,6 +25,7 @@ class ParquetDatasetReader(AbstractDatasetReader):
         num_proc: Optional[int] = None,
         **kwargs,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(
             path_or_paths,
             split=split,
@@ -78,6 +79,7 @@ class ParquetDatasetWriter:
         batch_size: Optional[int] = None,
         **parquet_writer_kwargs,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         self.dataset = dataset
         self.path_or_buf = path_or_buf
         self.batch_size = batch_size

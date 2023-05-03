@@ -40,6 +40,7 @@ def dummy_data_command_factory(args):
 
 class DummyDataGeneratorDownloadManager(DownloadManager):
     def __init__(self, mock_download_manager, *args, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(*args, **kwargs)
         self.mock_download_manager = mock_download_manager
         self.downloaded_dummy_paths = []

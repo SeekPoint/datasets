@@ -36,6 +36,7 @@ if version.parse(importlib_metadata.version("jiwer")) < version.parse("2.3.0"):
 
     class SentencesToListOfCharacters(tr.AbstractTransform):
         def __init__(self, sentence_delimiter: str = " "):
+            print('%s __init__ called', self.__classs__.__name__)
             self.sentence_delimiter = sentence_delimiter
 
         def process_string(self, s: str):

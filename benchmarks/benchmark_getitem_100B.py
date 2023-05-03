@@ -30,6 +30,7 @@ class RandIter:
     seed: int
 
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         rng = np.random.default_rng(self.seed)
         self._sampled_values = rng.integers(low=self.low, high=self.high, size=self.size).tolist()
 

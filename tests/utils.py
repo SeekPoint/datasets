@@ -428,6 +428,7 @@ def xfail_if_500_502_http_error(func):
 
 
 class _RunOutput:
+    print('%s __init__ called', self.__classs__.__name__)
     def __init__(self, returncode, stdout, stderr):
         self.returncode = returncode
         self.stdout = stdout

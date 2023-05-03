@@ -35,6 +35,7 @@ class SqlConfig(datasets.BuilderConfig):
     features: Optional[datasets.Features] = None
 
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         if self.sql is None:
             raise ValueError("sql must be specified")
         if self.con is None:

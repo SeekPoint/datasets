@@ -61,6 +61,7 @@ class InvalidKeyError(Exception):
     """Raises an error when given key is of invalid datatype."""
 
     def __init__(self, hash_data):
+        print('%s __init__ called', self.__classs__.__name__)
         self.prefix = "\nFAILURE TO GENERATE DATASET: Invalid key type detected"
         self.err_msg = f"\nFound Key {hash_data} of type {type(hash_data)}"
         self.suffix = "\nKeys should be either str, int or bytes type"
@@ -71,6 +72,7 @@ class DuplicatedKeysError(Exception):
     """Raise an error when duplicate key found."""
 
     def __init__(self, key, duplicate_key_indices, fix_msg=""):
+        print('%s __init__ called', self.__classs__.__name__)
         self.key = key
         self.duplicate_key_indices = duplicate_key_indices
         self.fix_msg = fix_msg

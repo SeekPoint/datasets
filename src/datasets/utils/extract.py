@@ -20,6 +20,7 @@ logger = get_logger(__name__)
 
 class ExtractManager:
     def __init__(self, cache_dir: Optional[str] = None):
+        print('%s __init__ called', self.__classs__.__name__)
         self.extract_dir = (
             os.path.join(cache_dir, config.EXTRACTED_DATASETS_DIR) if cache_dir else config.EXTRACTED_DATASETS_PATH
         )

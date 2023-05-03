@@ -175,6 +175,7 @@ class EmptyTqdm:
     """Dummy tqdm which doesn't do anything."""
 
     def __init__(self, *args, **kwargs):  # pylint: disable=unused-argument
+        print('%s __init__ called', self.__classs__.__name__)
         self._iterator = args[0] if args else None
 
     def __iter__(self):

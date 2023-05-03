@@ -90,6 +90,7 @@ class TranslationVariableLanguages:
     _type: str = field(default="TranslationVariableLanguages", init=False, repr=False)
 
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         self.languages = list(sorted(list(set(self.languages)))) if self.languages else None
         self.num_languages = len(self.languages) if self.languages else None
 

@@ -32,6 +32,7 @@ class BaseCompressedFileFileSystem(AbstractArchiveFileSystem):
             target_protocol(:obj:``str``, optional): To override the FS protocol inferred from a URL.
             target_options (:obj:``dict``, optional): Kwargs passed when instantiating the target FS.
         """
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(self, **kwargs)
         # always open as "rb" since fsspec can then use the TextIOWrapper to make it work for "r" mode
         self.file = fsspec.open(
@@ -126,6 +127,7 @@ class ZstdFileSystem(BaseCompressedFileFileSystem):
         block_size: int = DEFAULT_BLOCK_SIZE,
         **kwargs,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(
             fo=fo,
             mode=mode,
@@ -145,6 +147,7 @@ class ZstdFileSystem(BaseCompressedFileFileSystem):
 
         class WrappedFile:
             def __init__(self, file_):
+                print('%s __init__ called', self.__classs__.__name__)
                 self._file = file_
 
             def __enter__(self):
